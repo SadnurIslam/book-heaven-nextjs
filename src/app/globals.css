@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 
-/* :root{
+:root{
     --bg-primary: #f9fafb;
     --bg-secondary: #ffffff;
     --text-primary: #111827;
@@ -21,8 +21,9 @@
     --book-bg: #ffffff;
     --color-bg: #fafafa;
     --color-text: #1e1e1e;
+    --radius-card: 1rem;
 }
-   */
+  
 
 .btn{
     @apply rounded-xl;
@@ -38,4 +39,195 @@
 
 .logo-color {
     @apply text-blue-500;
+  }
+
+
+
+
+
+  .my-navbar {
+    @apply flex items-center justify-between py-4 px-4 md:px-8;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    backdrop-filter: blur(12px);
+  }
+  
+  .text-navlink {
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .text-navlink:hover {
+    color: var(--text-primary);
+    @apply underline;
+  }
+  
+  a.active {
+    color: var(--text-primary);
+    font-weight: 600;
+    @apply underline;
+  }
+  
+
+  
+  .logo-color {
+    @apply text-blue-500;
+  }
+  
+  .banner-button-add {
+    @apply btn rounded-lg font-bold transition-all;
+    background: var(--add-btn-bg);
+    color: var(--add-btn-text);
+  }
+  
+  .banner-button-add:hover {
+    opacity: 0.9;
+    background: var(--add-btn-hover-bg);
+    color: var(--add-btn-hover-text);
+    @apply scale-105;
+  }
+  
+  .form-container {
+    background-color: var(--form-bg);
+    border: var(--form-border);
+    @apply mx-auto flex flex-col rounded-2xl p-8 shadow-xl gap-3;
+  }
+  
+  .modal-container {
+    background-color: var(--form-bg);
+    border: var(--form-border);
+    @apply mx-auto flex flex-col rounded-2xl p-10 shadow-lg;
+  }
+  
+  .input {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    @apply w-full outline-0 rounded-lg p-3 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 transition-all;
+  }
+  
+  .my-select {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    @apply select w-full outline-0 rounded-lg px-3 border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 transition-all;
+  }
+  
+  .card-container {
+    background-color: var(--card-bg);
+    @apply rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all;
+  }
+  
+  .text-primary {
+    color: var(--text-primary);
+  }
+  
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .row-border {
+    border: var(--row-border);
+  }
+  
+  .border-bottom {
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .book-bg {
+    background-color: var(--book-bg);
+  }
+  
+  .my-footer {
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+  }
+  
+  
+  .banner-overlay {
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+  }
+  
+  .shadow-xl {
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.3);
+  }
+  
+  h1, h2, h3, h4 {
+    color: var(--text-primary);
+    @apply font-bold;
+  }
+  
+  
+  
+  .genre-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .btn {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+  
+  .section-title {
+    @apply text-3xl font-bold mb-8 text-center md:text-left;
+  }
+  
+  
+  .social-icon {
+    color: inherit;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    opacity: 1;
+    color: var(--color-primary, hsl(var(--p)));
+    transform: translateY(-2px);
+  }
+  
+  
+  .table {
+    @apply text-sm md:text-base;
+  }
+  
+  .table thead th {
+    @apply bg-base-200 text-base-content uppercase tracking-wide;
+  }
+  
+  .table tbody tr:hover {
+    @apply bg-base-300/40 transition-all;
+  }
+  
+  .btn {
+    transition: all 0.25s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  .shadow-md, .shadow-lg {
+    border-radius: 0.75rem;
+  }
+  
+  select.select {
+    @apply bg-base-100 border border-base-300 rounded-md;
+  }
+  
+  
+  .show-password{
+    @apply absolute right-3 top-3 text-gray-400 z-10;
+  }
+  
+  .show-password:hover{
+    color: var(--text-secondary);
   }
