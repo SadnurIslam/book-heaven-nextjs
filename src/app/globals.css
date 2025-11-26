@@ -35,3 +35,7 @@
 .text-secondary{
     color: #4b5563;
 }
+
+.logo-color {
+    @apply text-blue-500;
+  }

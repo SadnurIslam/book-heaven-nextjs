@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 const Banner = () => {
     return (
-        <section className="relative flex flex-col justify-center items-center text-center min-h-[500px] md:min-h-[600px] overflow-hidden my-12 rounded-xl">
+        <section className="relative flex flex-col justify-center items-center text-center min-h-[500px] md:min-h-[600px] overflow-hidden my-14 rounded-xl">
             <div className="absolute inset-0">
                 <Image
                     src="https://i.ibb.co.com/jPWMy2bQ/banner.png"

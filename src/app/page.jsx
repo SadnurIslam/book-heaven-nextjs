@@ -1,5 +1,7 @@
 import Banner from "./components/Banner";
 import LatestBooks from "./components/LatestBooks";
+import ExploreByGenre from "./components/ExploreByGenre";
+import BookOfTheWeek from "./components/BookOfTheWeek";
 
 
 const Home = () => {
@@ -8,8 +10,8 @@ const Home = () => {
     <div className='flex flex-col gap-16'>
       <Banner />
       <LatestBooks />
-      {/* <ExploreByGenre />
-      <BookOfTheWeek /> */}
+      <ExploreByGenre />
+      <BookOfTheWeek />
     </div>
   );
 };
