@@ -1,5 +1,6 @@
 import "./globals.css";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 export default function RootLayout({ children }) {
@@ -11,7 +12,7 @@ export default function RootLayout({ children }) {
         <main className="grow md:w-11/12 min-h-screen mx-auto px-4 py-5">
         {children}
         </main>
-        
+        <Footer></Footer>
       </body>
     </html>
   );

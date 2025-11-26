@@ -1,9 +1,22 @@
 
 import BooksCard from './BooksCard';
+import axios from 'axios';
 
 const LatestBooks = async () => {
 
-    const books = await fetch('https://book-heaven-server-jade.vercel.app/books?limit=6&sort=latest').then(res => res.json());
+    const fetchBooks = async () => {
+        try{
+            const res = await axios.get('https://book-heaven-server-jade.vercel.app/books?limit=6&sort=latest');
+            return res.data;
+        }
+        catch(error){
+            console.error("Error fetching latest books:", error);
+            return [];
+        }
+    }
+
+    const books = await fetchBooks();
+
 
     return (
         <section className="mb-16">
