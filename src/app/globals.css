@@ -1,2 +1,37 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+/* :root{
+    --bg-primary: #f9fafb;
+    --bg-secondary: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --border-color: #e5e7eb;
+    --add-btn-bg: #2563eb;
+    --add-btn-border: none;
+    --add-btn-text: #ffffff;
+    --add-btn-hover-bg: #1d4ed8;
+    --add-btn-hover-text: #ffffff;
+    --input-bg: #ffffff;
+    --form-bg: #ffffff;
+    --form-border: 1px solid #e5e7eb;
+    --card-bg: #f3f4f6;
+    --row-border: 1px solid #e5e7eb;
+    --book-bg: #ffffff;
+    --color-bg: #fafafa;
+    --color-text: #1e1e1e;
+}
+   */
+
+.btn{
+    @apply rounded-xl;
+}
+
+.text-primary{
+    color: #111827;
+}
+
+.text-secondary{
+    color: #4b5563;
+}
