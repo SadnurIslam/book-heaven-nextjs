@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📚 The Book Haven
 
-## Getting Started
+A full-stack digital library web application where users can explore, add, update, and manage books in one place.  
+Built using **Next.js**, **Firebase Authentication**, **Axios**, and **TailwindCSS + DaisyUI** for a clean, responsive UI.
 
-First, run the development server:
+---
+
+## 🌐 Live Site URL
+🔗 [Visit The Book Haven Live](https://book-heaven-nextjs.vercel.app/)
+
+---
+
+## 🧠 Project Features
+
+- 🔐 **User Authentication** using Firebase (Email/Password & Google Login)
+- 📚 **CRUD Operations** (Add, Read, Update, Delete Books)
+- 🧾 **Private Routes** for Add Book, My Books, Update Book, and Book Details
+- ⚙️ **Sorting & Filtering** books by Rating (Low to High / High to Low)
+- 💬 **Real-time Comments** on Book Details page
+- 📱 **Fully Responsive Design** for mobile, tablet, and desktop
+- 🌩 **Deployed on Netlify** with Firebase domain authorization
+
+---
+
+## 🧭 Navigation Structure
+
+| Route | Description | Access |
+|-------|--------------|--------|
+| `/` | Home page with Banner, Latest Books, and Static Sections | Public |
+| `/all-books` | Shows all books in table format with sorting options | Public |
+| `/books/:id` | Shows full details of a selected book | Private |
+| `/add-book` | Add new book form (with image upload) | Private |
+| `/my-books` | List of books added by the logged-in user | Private |
+| `*` | Custom 404 Not Found Page | Public |
+
+---
+
+## 🧩 Tech Stack
+
+**Frontend:**
+- Next.js
+- Firebase Authentication
+- Axios for API calls
+- React Hot Toast for notifications
+- TailwindCSS + DaisyUI for styling
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the project root:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+VITE_apiUrl=https://your-server-side.vercel.app
+VITE_imgbb_key=your_imgbb_api_key
+VITE_firebase_apiKey=your_firebase_api_key
+VITE_firebase_authDomain=your_firebase_authDomain
+VITE_firebase_projectId=your_firebase_projectId
+VITE_firebase_storageBucket=your_firebase_storageBucket
+VITE_firebase_messagingSenderId=your_firebase_messagingSenderId
+VITE_firebase_appId=your_firebase_appId
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🚀 Run Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Clone the repo
+git clone https://github.com/SadnurIslam/book-heaven-client
 
-## Learn More
+# Go to project directory
+cd book-heaven-client
 
-To learn more about Next.js, take a look at the following resources:
+# Install dependencies
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Run the app
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🧾 Packages Used
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Package | Purpose |
+|---------|---------|
+| firebase | Authentication |
+| axios | API requests |
+| react-hot-toast | Success/error messages |
+| tailwindcss + daisyui | Styling & themes |
+| framer-motion | Animations (optional) |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧑‍💻 Author
+
+**Developer:** [Sadnur Islam](https://github.com/SadnurIslam)  
+📧 **Contact:** sadnurislam@gmail.com  
+🔗 **GitHub:** [github.com/SadnurIslam](https://github.com/SadnurIslam)  
