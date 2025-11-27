@@ -20,7 +20,9 @@ const MyBooks = () => {
     const [selectedBook, setSelectedBook] = useState(null);
     const modalRef = useRef(null);
 
-    
+    useEffect(() => {
+            document.title = "My Books | The Book Heaven";
+      }, []);
 
     useEffect(() => {
         axios

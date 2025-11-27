@@ -13,14 +13,16 @@ import { AuthContext } from '../../contexts/AuthContext';
 import NoBookFound from '@/app/components/NoBookFound';
 
 
-const BookDetails = ({params}) => {
+const BookDetails = ({ params }) => {
     const { user } = useContext(AuthContext);
     const [book, setBook] = useState(null);
     const [loading, setLoading] = useState(true);
     const [comments, setComments] = useState([]);
     const { id } = useParams();
 
-
+    useEffect(() => {
+        document.title = "Book Details | The Book Heaven";
+    }, []);
 
     useEffect(() => {
         // setLoading(true);
@@ -42,17 +44,17 @@ const BookDetails = ({params}) => {
         [id]);
 
 
-    if(loading){
+    if (loading) {
         return <div className='flex justify-center items-center min-h-screen'>
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
         </div>;
     }
 
-    if(!user){
+    if (!user) {
         redirect('/login');
     }
 
-    if(!book){
+    if (!book) {
         return <NoBookFound></NoBookFound>
     }
 
@@ -83,7 +85,7 @@ const BookDetails = ({params}) => {
             .catch(err => toast.error('Failed to add comment: ' + err.message));
     };
 
-    
+
     return (
         <div className='grid grid-cols-1 md:grid-cols-5 gap-10 my-16 mx-auto max-w-5xl justify-center items-start px-4 md:px-0'>
 
@@ -134,7 +136,7 @@ const BookDetails = ({params}) => {
                         {comments.length === 0 && <p className='text-gray-500'>No comments yet.</p>}
                         {comments.map(c => (
                             <div key={c._id} className='flex gap-3 items-start bg-base-200 rounded-lg p-3 shadow-sm'>
-                                <Image src={c.photoURL} alt={c.name} className='w-10 h-10 rounded-full object-cover' 
+                                <Image src={c.photoURL} alt={c.name} className='w-10 h-10 rounded-full object-cover'
                                     width={40} height={40}
                                 />
                                 <div>
@@ -147,7 +149,7 @@ const BookDetails = ({params}) => {
                 </div>
             </div>
 
-           
+
         </div>
     );
 };

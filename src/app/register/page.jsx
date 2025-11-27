@@ -10,12 +10,19 @@ import Image from 'next/image';
 import { redirect, useRouter } from 'next/navigation';
 import { AuthContext } from '../contexts/AuthContext';
 
+  
+
 const Register = () => {
+    
     const { signInWithGoogle, createUserWithPassword, setLoading, updateUserInfo, user, loading } = use(AuthContext);
     const router = useRouter();
 
     const [passwordError, setPasswordError] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
+
+    useEffect(() => {
+        document.title = "Register | The Book Heaven";
+    }, []);
 
     const goHome = () => {
         router.push("/");

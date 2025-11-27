@@ -7,16 +7,20 @@ import { AuthContext } from '../contexts/AuthContext';
 import { redirect } from 'next/navigation';
 
 const AddBooks = () => {
-    const {user, loading} = use(AuthContext);
+    const { user, loading } = use(AuthContext);
     const [error, setError] = useState(null);
 
-    if(loading){
+    useEffect(() => {
+        document.title = "Add Book | The Book Heaven";
+    }, []);
+
+    if (loading) {
         return <div className='flex justify-center items-center min-h-screen'>
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
         </div>;
     }
 
-    if(!user){
+    if (!user) {
         redirect('/login');
     }
 
@@ -117,9 +121,9 @@ const AddBooks = () => {
                     </div>
 
                     <div className='flex justify-end'>
-                    <button className="btn btn-primary mt-4 flex items-center justify-center gap-2">
-                        <FaPlus /> Add Book
-                    </button>
+                        <button className="btn btn-primary mt-4 flex items-center justify-center gap-2">
+                            <FaPlus /> Add Book
+                        </button>
                     </div>
                 </form>
             </div>

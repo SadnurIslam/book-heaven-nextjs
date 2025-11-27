@@ -14,21 +14,25 @@ const Login = () => {
     const { signInWithGoogle, signInWithPassword, setLoading, user, loading } = use(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
 
-    
+
     const router = useRouter();
 
     const goHome = () => {
         router.push("/");
     };
 
-    if(loading){
+    useEffect(() => {
+        document.title = "Login | The Book Heaven";
+    }, []);
+
+    if (loading) {
         return <div className='flex justify-center items-center min-h-screen'>
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
         </div>;
     }
 
-    
-    if(user){
+
+    if (user) {
         redirect("/");
     }
 
@@ -111,7 +115,7 @@ const Login = () => {
                     onClick={handleGoogleSignIn}
                     className="btn btn-outline btn-secondary w-full font-bold py-3 mt-0 flex items-center justify-center gap-2"
                 >
-                    <Image src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" className="w-5 h-5" width={300} height={300}/>
+                    <Image src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" className="w-5 h-5" width={300} height={300} />
                     Login with Google
                 </button>
 

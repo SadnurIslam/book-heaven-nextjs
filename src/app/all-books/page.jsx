@@ -1,6 +1,6 @@
 "use client";
 
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import toast from 'react-hot-toast';
 import BooksCard from '../components/BooksCard';
@@ -12,7 +12,11 @@ const AllBooks = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState('default');
-//   const axios = useAxios();
+  //   const axios = useAxios();
+
+  useEffect(() => {
+    document.title = "All Books | The Book Heaven";
+  }, []);
 
   useEffect(() => {
     axios
@@ -65,10 +69,10 @@ const AllBooks = () => {
         {
           loading ? (
             <Skeleton times={12} />
-          ) :books.map(book => <BooksCard key={book._id} book={book} />)
+          ) : books.map(book => <BooksCard key={book._id} book={book} />)
         }
-                
-            </div>
+
+      </div>
     </section>
   );
 };
