@@ -7,11 +7,11 @@ import { Tooltip } from 'react-tooltip';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import { AuthContext } from '../contexts/AuthContext';
 
 const Register = () => {
-    const { signInWithGoogle, createUserWithPassword, setLoading, updateUserInfo } = use(AuthContext);
+    const { signInWithGoogle, createUserWithPassword, setLoading, updateUserInfo, user, loading } = use(AuthContext);
     const router = useRouter();
 
     const [passwordError, setPasswordError] = useState(null);
@@ -20,6 +20,17 @@ const Register = () => {
     const goHome = () => {
         router.push("/");
     };
+
+    if (loading) {
+        return <div className='flex justify-center items-center min-h-screen'>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>;
+    }
+
+
+    if (user) {
+        redirect("/");
+    }
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()

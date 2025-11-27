@@ -11,18 +11,26 @@ import { redirect, useRouter } from 'next/navigation';
 
 
 const Login = () => {
-    const { signInWithGoogle, signInWithPassword, setLoading, user } = use(AuthContext);
+    const { signInWithGoogle, signInWithPassword, setLoading, user, loading } = use(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
+
     
-    if(user){
-        redirect("/");
-    }
     const router = useRouter();
 
     const goHome = () => {
         router.push("/");
     };
 
+    if(loading){
+        return <div className='flex justify-center items-center min-h-screen'>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>;
+    }
+
+    
+    if(user){
+        redirect("/");
+    }
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
