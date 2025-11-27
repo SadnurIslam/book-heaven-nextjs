@@ -6,15 +6,17 @@ import React, { use, useEffect, useState } from 'react';
 import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../contexts/AuthContext';
-import { useRouter } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 
 
 
 const Login = () => {
-    const { signInWithGoogle, signInWithPassword, setLoading } = use(AuthContext);
+    const { signInWithGoogle, signInWithPassword, setLoading, user } = use(AuthContext);
     const [showPassword, setShowPassword] = useState(false);
     
-
+    if(user){
+        redirect("/");
+    }
     const router = useRouter();
 
     const goHome = () => {
