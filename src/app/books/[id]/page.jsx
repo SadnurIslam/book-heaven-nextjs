@@ -14,9 +14,9 @@ import NoBookFound from '@/app/components/NoBookFound';
 
 
 const BookDetails = ({ params }) => {
-    const { user } = useContext(AuthContext);
+    const { user, loading} = useContext(AuthContext);
     const [book, setBook] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loadingLocal, setLoadingLocal] = useState(true);
     const [comments, setComments] = useState([]);
     const { id } = useParams();
 
@@ -25,7 +25,7 @@ const BookDetails = ({ params }) => {
     }, []);
 
     useEffect(() => {
-        // setLoading(true);
+        // setLoadingLocal(true);
         axios.get(`https://book-heaven-server-jade.vercel.app/books/${id}`)
             .then(response => {
                 setBook(response.data);
@@ -33,7 +33,7 @@ const BookDetails = ({ params }) => {
             .catch(error => {
                 toast.error('Error fetching book details: ' + error.message, { autoClose: 2000 });
             })
-            .finally(() => setLoading(false));
+            .finally(() => setLoadingLocal(false));
     }, [id]);
 
     useEffect(() => {
@@ -43,8 +43,14 @@ const BookDetails = ({ params }) => {
     },
         [id]);
 
+        if(loading){
+        return <div className='flex justify-center items-center min-h-screen'>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>;
+    }
 
-    if (loading) {
+
+    if (loadingLocal) {
         return <div className='flex justify-center items-center min-h-screen'>
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
         </div>;

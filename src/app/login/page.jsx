@@ -6,7 +6,7 @@ import React, { use, useEffect, useState } from 'react';
 import toast from "react-hot-toast";
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { AuthContext } from '../contexts/AuthContext';
-import { redirect, useRouter } from 'next/navigation';
+import {  useRouter } from 'next/navigation';
 
 
 
@@ -25,16 +25,18 @@ const Login = () => {
         document.title = "Login | The Book Heaven";
     }, []);
 
+    useEffect(() => {
+        if (user) {
+            router.push("/");
+        }
+    }, [user, router]);
+
     if (loading) {
         return <div className='flex justify-center items-center min-h-screen'>
             <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
         </div>;
     }
 
-
-    if (user) {
-        redirect("/");
-    }
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()

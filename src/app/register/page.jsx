@@ -7,7 +7,7 @@ import { Tooltip } from 'react-tooltip';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
-import { redirect, useRouter } from 'next/navigation';
+import {  useRouter } from 'next/navigation';
 import { AuthContext } from '../contexts/AuthContext';
 
   
@@ -24,6 +24,12 @@ const Register = () => {
         document.title = "Register | The Book Heaven";
     }, []);
 
+    useEffect(() => {
+        if (user) {
+            router.push("/");
+        }
+    }, [user, router]);
+
     const goHome = () => {
         router.push("/");
     };
@@ -35,9 +41,8 @@ const Register = () => {
     }
 
 
-    if (user) {
-        redirect("/");
-    }
+    
+    
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
