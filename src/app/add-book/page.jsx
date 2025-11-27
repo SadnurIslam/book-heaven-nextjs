@@ -1,11 +1,24 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../contexts/AuthContext';
+import { redirect } from 'next/navigation';
 
 const AddBooks = () => {
+    const {user, loading} = use(AuthContext);
     const [error, setError] = useState(null);
+
+    if(loading){
+        return <div className='flex justify-center items-center min-h-screen'>
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>;
+    }
+
+    if(!user){
+        redirect('/login');
+    }
 
     const handleAddBook = (event) => {
         event.preventDefault();

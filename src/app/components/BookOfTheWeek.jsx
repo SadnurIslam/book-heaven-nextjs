@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const BookOfTheWeek = () => {
     return (
-        <section className="mb-16">
+        <section className="mb-5">
             <h3 className="text-3xl font-bold mb-8 text-center md:text-left">Book of the Week</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 rounded-2xl overflow-hidden shadow-lg bg-base-200 dark:bg-base-300">

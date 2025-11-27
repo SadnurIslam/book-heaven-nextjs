@@ -5,9 +5,12 @@ import { MdLocalLibrary, MdMenu, MdClose } from "react-icons/md";
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from "react-hot-toast";
 import Link from 'next/link';
+import { AuthContext } from '../contexts/AuthContext';
+import Image from 'next/image';
 
 
 const Navbar = () => {
+  const { user, loading, signOutUser } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -22,17 +25,27 @@ const Navbar = () => {
   }, []);
 
 
+  const handleSignOut = () => {
+    signOutUser()
+      .then(() => {
+        toast.success(`Bye Bye! ${user.displayName}`, { autoClose: 1000 });
+      })
+      .catch(error => {
+        toast.error('Sign out failed: ' + error.code, { autoClose: 2000 });
+      });
+  };
+
  
   const navLinks = (
     <>
       <Link href='/' className='' onClick={() => setMenuOpen(false)}>Home</Link>
       <Link href='/all-books' className='' onClick={() => setMenuOpen(false)}>All Books</Link>
-      {/* {user && ( */}
+      {user && 
         <>
           <Link href='/add-book' className='' onClick={() => setMenuOpen(false)}>Add Book</Link>
           <Link href='/my-books' className='' onClick={() => setMenuOpen(false)}>My Books</Link>
         </>
-      {/* )} */}
+      }
     </>
   );
 
@@ -46,13 +59,15 @@ const Navbar = () => {
   const loggedInUserLinks = (
     <div className='flex items-center gap-3'>
       <div className='h-10 w-10'>
-          {/* <img className='h-full w-full rounded-full ring-2 ring-blue-500/50' src={user?.photoURL} alt={user?.displayName} /> */}
+          <Image className='h-full w-full rounded-full ring-2 ring-blue-500/50' src={user?.photoURL} alt={user?.displayName} 
+          width={40} height={40}
+          />
       </div>
-      <button className='my-button-secondary text-sm'>Logout</button>
+      <button onClick={handleSignOut} className='btn btn-outline btn-secondary text-sm'>Logout</button>
     </div>
   );
 
-
+  
 
   return (
     <header className='sticky top-0 z-50 bg-base-100 shadow-md px-4 md:px-8 py-4 flex justify-between items-center'>
@@ -64,7 +79,7 @@ const Navbar = () => {
 
       <nav className='hidden lg:flex items-center gap-5'>
         {navLinks}
-        {/* {
+        {
           loading ? (
             <div className='flex items-center gap-5'>
               <div className='skeleton h-10 w-10 rounded-full'></div>
@@ -72,8 +87,7 @@ const Navbar = () => {
             </div>
           ) : user ? loggedInUserLinks : userLinks
 
-        } */}
-        {userLinks}
+        }
       </nav>
 
       <button className='lg:hidden text-2xl cursor-pointer' onClick={() => setMenuOpen(!menuOpen)}>
@@ -94,7 +108,7 @@ const Navbar = () => {
               {navLinks}
             </div>
             <div className='flex justify-between items-center mt-3'>
-              {/* {user ? loggedInUserLinks : userLinks} */}
+              {user ? loggedInUserLinks : userLinks}
               {userLinks}
             </div>
           </motion.div>
